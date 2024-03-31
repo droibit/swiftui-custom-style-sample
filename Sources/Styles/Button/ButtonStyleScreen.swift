@@ -3,15 +3,16 @@ import SwiftUI
 struct ButtonStyleScreen: View {
     var body: some View {
         ScrollView {
-            fabSection()
+            fabs()
+                .padding(.top)
 
-            filledButtonSection()
+            filledButtons()
                 .padding(.top)
         }
         .navigationTitle(CustomStyleType.button.description)
     }
 
-    private func fabSection() -> some View {
+    private func fabs() -> some View {
         VStack(spacing: 12.0) {
             VStack(spacing: 12.0) {
                 HStack {
@@ -57,7 +58,7 @@ struct ButtonStyleScreen: View {
         .padding(.horizontal)
     }
 
-    private func filledButtonSection() -> some View {
+    private func filledButtons() -> some View {
         VStack(spacing: 8.0) {
             labeledButton("Add", systemImage: "plus")
                 .buttonStyle(.filled(.primary, size: .standard))
@@ -86,19 +87,25 @@ struct ButtonStyleScreen: View {
 }
 
 private func iconButton(_ systemName: String) -> some View {
-    Button {} label: {
+    Button {
+        print("Button tapped")
+    } label: {
         Image(systemName: systemName)
     }
 }
 
 private func textButton(_ title: String) -> some View {
-    Button {} label: {
+    Button {
+        print("Button tapped")
+    } label: {
         Text(title)
     }
 }
 
 private func labeledButton(_ title: String, systemImage: String) -> some View {
-    Button {} label: {
+    Button {
+        print("Button tapped")
+    } label: {
         Label(title, systemImage: systemImage)
     }
 }
