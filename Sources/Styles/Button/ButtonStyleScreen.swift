@@ -8,6 +8,9 @@ struct ButtonStyleScreen: View {
 
             filledButtons()
                 .padding(.top)
+
+            linkButtons()
+                .padding(.top)
         }
         .navigationTitle(CustomStyleType.button.description)
     }
@@ -61,26 +64,42 @@ struct ButtonStyleScreen: View {
     private func filledButtons() -> some View {
         VStack(spacing: 8.0) {
             labeledButton("Add", systemImage: "plus")
+                .font(.body.weight(.heavy))
                 .buttonStyle(.filled(.primary, size: .standard))
 
             labeledButton("Add", systemImage: "plus")
                 .buttonStyle(.filled(.secondary, size: .standard))
 
             labeledButton("Add", systemImage: "plus")
+                .font(.body.weight(.thin))
                 .buttonStyle(.filled(.secondary, size: .standard))
                 .disabled(true)
 
             HStack(spacing: 4.0) {
                 textButton("Add")
+                    .font(.caption)
                     .buttonStyle(.filled(.primary, size: .customized(height: 25, width: nil)))
 
                 labeledButton("Add", systemImage: "plus")
+                    .font(.caption.bold())
                     .buttonStyle(.filled(.secondary, size: .customized(height: 25, width: nil)))
 
                 iconButton("plus")
+                    .font(.caption.bold())
                     .buttonStyle(.filled(.secondary, size: .customized(height: 25, width: 40)))
                     .disabled(true)
             }
+        }
+        .padding(.horizontal)
+    }
+
+    private func linkButtons() -> some View {
+        HStack {
+            Button("Link") {}
+                .buttonStyle(.link())
+
+            Button("Link") {}
+                .buttonStyle(.link(.red))
         }
         .padding(.horizontal)
     }

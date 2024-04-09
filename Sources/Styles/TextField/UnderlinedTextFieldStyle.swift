@@ -32,7 +32,7 @@ struct UnderlinedTetxtFieldModifier: ViewModifier {
         content
             .overlay(alignment: .bottom) {
                 Rectangle()
-                    .frame(height: 0.6)
+                    .frame(height: 0.8)
                     .foregroundColor(focused ? Color.accentColor : Color.gray.opacity(0.6))
             }
     }

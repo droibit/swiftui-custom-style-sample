@@ -21,10 +21,12 @@ public struct ContentView: View {
                 switch type {
                 case .button:
                     ButtonStyleScreen()
+                case .textField:
+                    TextFieldScreen()
                 case .toggle:
                     ToggleStyleScreen()
-                default:
-                    Text("Not implemented yet.")
+                case .progressView:
+                    ProgressViewScreen()
                 }
             }
         }

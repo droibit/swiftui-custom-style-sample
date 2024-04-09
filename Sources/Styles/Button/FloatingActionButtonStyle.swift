@@ -1,4 +1,3 @@
-// swiftlint:disable identifier_name
 import SwiftUI
 
 enum FloatingActionButtonType {
@@ -59,7 +58,10 @@ struct FloatingActionButtonStyle: ButtonStyle {
             .background(role.backgroundColor(disabled: !isEnabled))
             .foregroundColor(role.foregroundColor(disabled: !isEnabled))
             .clipShape(type.shape)
-            .shadow(radius: size.shadowRadius, x: 0, y: 3)
+            .shadow(
+                color: Color(uiColor: .black.withAlphaComponent(0.16)),
+                radius: size.shadowRadius, x: 0, y: 3
+            )
     }
 }
 

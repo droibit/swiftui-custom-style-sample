@@ -27,6 +27,8 @@ struct FilledButtonStyle: ButtonStyle {
 
     @Environment(\.isEnabled)
     private var isEnabled: Bool
+    @Environment(\.font)
+    private var font: Font?
 
     init(role: ButtonRole, size: FilledButtonSize) {
         self.role = role
@@ -35,6 +37,8 @@ struct FilledButtonStyle: ButtonStyle {
 
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
+            .font(font ?? .body.bold())
+//            .bold(font == nil)
             .padding()
             .frame(maxWidth: size.width, maxHeight: size.height)
             .background(role.backgroundColor(disabled: !isEnabled))
@@ -57,18 +61,18 @@ struct FilledButtonStyle_Previews: PreviewProvider {
         VStack(spacing: 8.0) {
             Button {} label: {
                 Label("Add", systemImage: "plus")
+                    .font(.body.weight(.heavy))
             }
             .buttonStyle(.filled(.primary, size: .standard))
 
             Button {} label: {
                 Label("Add", systemImage: "plus")
-                    .bold()
             }
             .buttonStyle(.filled(.secondary, size: .standard))
 
             Button {} label: {
                 Label("Add", systemImage: "plus")
-                    .bold()
+                    .font(.body.weight(.thin))
             }
             .buttonStyle(.filled(.secondary, size: .standard))
             .disabled(true)
@@ -76,20 +80,20 @@ struct FilledButtonStyle_Previews: PreviewProvider {
             HStack(spacing: 4.0) {
                 Button {} label: {
                     Text("Add")
-                        .font(.caption)
                 }
+                .font(.caption)
                 .buttonStyle(.filled(.primary, size: .customized(height: 25, width: nil)))
 
                 Button {} label: {
                     Label("Add", systemImage: "plus")
-                        .font(.caption.bold())
                 }
+                .font(.caption.bold())
                 .buttonStyle(.filled(.secondary, size: .customized(height: 25, width: nil)))
 
                 Button {} label: {
                     Image(systemName: "plus")
-                        .font(.caption.bold())
                 }
+                .font(.caption.bold())
                 .buttonStyle(.filled(.secondary, size: .customized(height: 25, width: 40)))
                 .disabled(true)
             }
